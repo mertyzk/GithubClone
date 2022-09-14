@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E275A52528D1AEC20020FE80 /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E275A52428D1AEC20020FE80 /* GFButton.swift */; };
 		E275A52728D1B0A40020FE80 /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E275A52628D1B0A40020FE80 /* GFTextField.swift */; };
+		E275A52928D1BCDF0020FE80 /* FollowerListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E275A52828D1BCDF0020FE80 /* FollowerListVC.swift */; };
 		E2E5178328D05C1400F6618D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E5178228D05C1400F6618D /* AppDelegate.swift */; };
 		E2E5178528D05C1400F6618D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E5178428D05C1400F6618D /* SceneDelegate.swift */; };
 		E2E5178C28D05C1600F6618D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2E5178B28D05C1600F6618D /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		E275A52428D1AEC20020FE80 /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
 		E275A52628D1B0A40020FE80 /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
+		E275A52828D1BCDF0020FE80 /* FollowerListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListVC.swift; sourceTree = "<group>"; };
 		E2E5177F28D05C1400F6618D /* GithubFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2E5178228D05C1400F6618D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2E5178428D05C1400F6618D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,13 +64,14 @@
 			children = (
 				E2E5178228D05C1400F6618D /* AppDelegate.swift */,
 				E2E5178428D05C1400F6618D /* SceneDelegate.swift */,
-				E275A52428D1AEC20020FE80 /* GFButton.swift */,
-				E275A52628D1B0A40020FE80 /* GFTextField.swift */,
 				E2E5178B28D05C1600F6618D /* Assets.xcassets */,
 				E2E5178D28D05C1600F6618D /* LaunchScreen.storyboard */,
 				E2E5179028D05C1600F6618D /* Info.plist */,
+				E275A52428D1AEC20020FE80 /* GFButton.swift */,
+				E275A52628D1B0A40020FE80 /* GFTextField.swift */,
 				E2E5179628D07AE200F6618D /* SearchVC.swift */,
 				E2E5179828D07B2800F6618D /* FavoritesListVC.swift */,
+				E275A52828D1BCDF0020FE80 /* FollowerListVC.swift */,
 			);
 			path = GithubFollowers;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 				E2E5179928D07B2800F6618D /* FavoritesListVC.swift in Sources */,
 				E275A52528D1AEC20020FE80 /* GFButton.swift in Sources */,
 				E2E5179728D07AE200F6618D /* SearchVC.swift in Sources */,
+				E275A52928D1BCDF0020FE80 /* FollowerListVC.swift in Sources */,
 				E2E5178328D05C1400F6618D /* AppDelegate.swift in Sources */,
 				E2E5178528D05C1400F6618D /* SceneDelegate.swift in Sources */,
 			);
