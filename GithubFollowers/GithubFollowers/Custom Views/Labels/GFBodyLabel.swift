@@ -11,6 +11,7 @@ class GFBodyLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configure()
     }
     
     required init?(coder: NSCoder) {
@@ -25,6 +26,7 @@ class GFBodyLabel: UILabel {
     
     private func configure(){
         textColor                 = .secondaryLabel
+        font                      = UIFont.preferredFont(forTextStyle: .body)
         adjustsFontSizeToFitWidth = true
         minimumScaleFactor        = 0.75
         lineBreakMode             = .byWordWrapping
