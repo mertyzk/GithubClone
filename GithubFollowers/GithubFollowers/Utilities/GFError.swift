@@ -1,8 +1,8 @@
 //
-//  ErrorMessage.swift
+//  GFError.swift
 //  GithubFollowers
 //
-//  Created by Macbook Air on 16.09.2022.
+//  Created by Macbook Air on 10.10.2022.
 //
 
 import Foundation
