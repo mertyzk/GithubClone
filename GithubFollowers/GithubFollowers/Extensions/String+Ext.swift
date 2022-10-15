@@ -5,6 +5,11 @@
 //  Created by Macbook Air on 13.10.2022.
 //
 
+// ******************************************************************************
+// The createdAt variable changed value from string to Date in Model > User.swift
+// We no longer need to use this extension.
+
+/*
 import Foundation
 
 extension String {
@@ -23,3 +28,8 @@ extension String {
     }
     
 }
+*/
+
+// The createdAt variable changed value from string to Date in Model > User.swift
+// We no longer need to use this extension.
+// ******************************************************************************
