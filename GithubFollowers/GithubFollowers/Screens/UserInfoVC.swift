@@ -19,7 +19,7 @@ class UserInfoVC: UIViewController {
     let itemViewOne         = UIView()
     let itemViewTwo         = UIView()
     let dateLabel           = GFBodyLabel(textAlignment: .center)
-    var itemViews: [UIView]  = []
+    var itemViews: [UIView] = []
     
     var username: String!
     weak var delegate: UserInfoVCDelegate!
@@ -84,7 +84,6 @@ class UserInfoVC: UIViewController {
                 itemView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
                 itemView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
             ])
-            
         }
         
         NSLayoutConstraint.activate([

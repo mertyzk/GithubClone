@@ -12,14 +12,16 @@ class FollowerListVC: GFDataLoadingVC {
     enum Section { case main }
 
     var userName: String!
-    var followers: [Follower] = []
-    var filteredFollowers: [Follower] = []
-    var page = 1
-    var hasMoreFollowers = true
+    var followers: [Follower]           = []
+    var filteredFollowers: [Follower]   = []
+    var page                            = 1
+    var hasMoreFollowers                = true
+    var isSearching                     = false
+    var isLoadingMoreFollowers          = false
+    
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
-    var isSearching = false
-    var isLoadingMoreFollowers = false
+    
     
     init (username: String){
         super.init(nibName: nil, bundle: nil)
@@ -30,6 +32,7 @@ class FollowerListVC: GFDataLoadingVC {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,12 +48,14 @@ class FollowerListVC: GFDataLoadingVC {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    
     func configureViewController(){
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
         navigationItem.rightBarButtonItem = addButton
     }
+    
     
     func configureCollectionView(){
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(in: view))
@@ -60,6 +65,7 @@ class FollowerListVC: GFDataLoadingVC {
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseID)
     }
     
+    
     func configureSearchController() {
         let searchController                                    = UISearchController()
         searchController.searchResultsUpdater                   = self
@@ -68,30 +74,40 @@ class FollowerListVC: GFDataLoadingVC {
         navigationItem.searchController                         = searchController
     }
      
+    
     func getFollowers(username: String, page: Int){
         showLoadingView()
         isLoadingMoreFollowers = true
         NetworkManager.shared.getFollowers(for: userName, page: page) { [weak self] result in
             guard let self = self else { return }
             self.dismissLoadingView()
+            
             switch result {
             case .success(let followers):
-                if followers.count < 100 { self.hasMoreFollowers = false }
-                self.followers.append(contentsOf: followers)
+                self.updateUI(with: followers)
                 
-                if self.followers.isEmpty {
-                    let message = "This user doesn't have any followers..."
-                    DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
-                    return
-                }
-                
-                self.updateData(on: self.followers)
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Bad Stuff Happend", message: error.rawValue, buttonTitle: "OK")
             }
+            
             self.isLoadingMoreFollowers = false
         }
     }
+    
+    
+    func updateUI(with followers: [Follower]) {
+        if followers.count < 100 { self.hasMoreFollowers = false }
+        self.followers.append(contentsOf: followers)
+        
+        if self.followers.isEmpty {
+            let message = "This user doesn't have any followers..."
+            DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
+            return
+        }
+        
+        self.updateData(on: self.followers)
+    }
+    
     
     func configureDataSource(){
         dataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { collectionView, indexPath, follower in
@@ -101,12 +117,14 @@ class FollowerListVC: GFDataLoadingVC {
         })
     }
     
+    
     func updateData(on followers: [Follower]){
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapshot.appendSections([.main])
         snapshot.appendItems(followers)
         DispatchQueue.main.async { self.dataSource.apply(snapshot, animatingDifferences: true) }
     }
+    
     
     @objc func addButtonTapped() {
         showLoadingView()
@@ -116,20 +134,26 @@ class FollowerListVC: GFDataLoadingVC {
             
             switch result {
             case .success(let user):
-                let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
-                PersistenceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
-                    guard let self = self else { return }
-                    
-                    guard let error = error else { // Error is nil
-                        self.presentGFAlertOnMainThread(title: "Success", message: "You have successfully favorited this user.", buttonTitle: "OK")
-                        return
-                    }
-                    
-                    self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
-                }
+                self.addUserToFavorites(user: user)
+
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
             }
+        }
+    }
+    
+    
+    func addUserToFavorites(user: User){
+        let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
+        PersistenceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
+            guard let self = self else { return }
+            
+            guard let error = error else { // Error is nil
+                self.presentGFAlertOnMainThread(title: "Success", message: "You have successfully favorited this user.", buttonTitle: "OK")
+                return
+            }
+            
+            self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
         }
     }
 }

@@ -21,6 +21,7 @@ class GFItemInfoVC: UIViewController {
     
     var user: User!
     
+    
     init(user: User!) {
         super.init(nibName: nil, bundle: nil)
         self.user = user
@@ -30,6 +31,7 @@ class GFItemInfoVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureBackgroundView()
@@ -37,6 +39,7 @@ class GFItemInfoVC: UIViewController {
         layoutUI()
         configureStackView()
     }
+    
     
     private func configureBackgroundView() {
         view.layer.cornerRadius = 19
