@@ -48,7 +48,7 @@ class FavoritesListVC: GFDataLoadingVC {
                 self.updateUI(with: favorites)
                 
             case .failure(let error):
-                self.presentGFAlertOnMainThread(title: "Something went wrong...", message: error.rawValue, buttonTitle: "OK")
+                self.presentGFAlert(title: "Something went wrong...", message: error.rawValue, buttonTitle: "OK")
             }
         }
     }
@@ -95,7 +95,7 @@ extension FavoritesListVC: UITableViewDelegate, UITableViewDataSource {
                 tableView.deleteRows(at: [indexPath], with: .left)
                 return
             }
-            self.presentGFAlertOnMainThread(title: "Unablo to remove", message: error.rawValue, buttonTitle: "OK")
+            self.presentGFAlert(title: "Unablo to remove", message: error.rawValue, buttonTitle: "OK")
         }
         
     }
