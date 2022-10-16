@@ -12,7 +12,9 @@ class SearchVC: UIViewController {
     let logoImageView = UIImageView()
     let usernameTextField = GFTextField()
     let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
+    
     var isUsernameEntered: Bool { return !usernameTextField.text!.isEmpty }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,7 @@ class SearchVC: UIViewController {
         usernameTextField.text = ""
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
     
     func createDismissKeyboardTapGesture(){
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
