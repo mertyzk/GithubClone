@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E20AD28828FBE7FB002C7716 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20AD28728FBE7FB002C7716 /* UIView+Ext.swift */; };
 		E20E1EA228D4597C0039C179 /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20E1EA128D4597C0039C179 /* Follower.swift */; };
 		E20E1EA428D459D90039C179 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20E1EA328D459D90039C179 /* User.swift */; };
 		E20E1EA728D45E1A0039C179 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20E1EA628D45E1A0039C179 /* NetworkManager.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E20AD28728FBE7FB002C7716 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		E20E1EA128D4597C0039C179 /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		E20E1EA328D459D90039C179 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E20E1EA628D45E1A0039C179 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				E275A53028D1CDC00020FE80 /* UIViewController+Ext.swift */,
 				E27B699B28F7F9A400053285 /* Date+Ext.swift */,
 				E27B699D28F7F9D500053285 /* String+Ext.swift */,
+				E20AD28728FBE7FB002C7716 /* UIView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				E275A52928D1BCDF0020FE80 /* FollowerListVC.swift in Sources */,
 				E2E5178328D05C1400F6618D /* AppDelegate.swift in Sources */,
 				E2E5178528D05C1400F6618D /* SceneDelegate.swift in Sources */,
+				E20AD28828FBE7FB002C7716 /* UIView+Ext.swift in Sources */,
 				E27B699728F7EB8600053285 /* GFRepoItemVC.swift in Sources */,
 				E2302C1A28F3FDA300F9BBB1 /* UserInfoVC.swift in Sources */,
 			);

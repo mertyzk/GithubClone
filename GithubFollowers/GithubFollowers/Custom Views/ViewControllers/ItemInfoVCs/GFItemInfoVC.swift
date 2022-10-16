@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol ItemInfoVCDelegate: AnyObject {
+    func didTapGitHubProfile(for user: User!)
+    func didTapGetFollowers(for user: User!)
+}
+
 class GFItemInfoVC: UIViewController {
     
     let stackView       = UIStackView()
@@ -15,7 +20,6 @@ class GFItemInfoVC: UIViewController {
     let actionButton    = GFButton()
     
     var user: User!
-    weak var delegate: UserInfoVCDelegate!
     
     init(user: User!) {
         super.init(nibName: nil, bundle: nil)
@@ -51,12 +55,12 @@ class GFItemInfoVC: UIViewController {
     }
     
     @objc func actionButtonTapped() {
-        //
+        //Override at GFRepoItemVC and GFFollowerItemVC because this is Super/Parent Class but these VC's (GFRepoItemVC & GFFollowerItemVC) are child class.
     }
     
     private func layoutUI(){
-        view.addSubview(stackView)
-        view.addSubview(actionButton)
+        
+        view.addSubviewsExt(stackView, actionButton)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         let padding: CGFloat = 20
